@@ -39,8 +39,11 @@ export const Input = styled.input`
   padding-left: 10px;
   font-size: 15px;
   outline: none;
+  background: gainsboro;
+  border: 1px solid gainsboro;
+  border: none;
   &:focus {
-    border: 2px solid blue;
+    border: 1px solid rgb(0, 0, 150);
   }
 `;
 
@@ -51,7 +54,8 @@ export const Button = styled.button`
   border: none;
   text-transform: uppercase;
   font-size: 17px;
-  background-color: ${({ google }) => (google ? "red" : "blue")};
+  background-color: ${({ google }) =>
+    google ? "rgb(206, 0, 0)" : "rgb(0, 0, 150)"};
   color: #fff;
   cursor: pointer;
   &:active {

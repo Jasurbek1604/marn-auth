@@ -11,7 +11,7 @@ const SignIn = () => {
         <Input placeholder="email" />
         <Input placeholder="password" />
         <Button>Sign In</Button>
-        <Button google>Countinue with google</Button>
+        <Button google="true">Countinue with google</Button>
         <Text>
           Don't have an account?{" "}
           <Span onClick={() => navigate("/signup")}>Sign Up</Span>
