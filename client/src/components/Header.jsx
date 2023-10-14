@@ -1,21 +1,22 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import { Container, Logo, Nav, Center, Link } from "./style";
 
 const Header = () => {
   return (
-    <div>
-      <div>
-        <div>
-          <h1>Auth App</h1>
-          <ul>
-            <li>Home</li>
-            <li>About</li>
-            <li>Sign In</li>
-          </ul>
-        </div>
-      </div>
-      {<Outlet />}
-    </div>
+    <React.Fragment>
+      <Container>
+        <Center>
+          <Logo>Auth App</Logo>
+          <Nav>
+            <Link to={"/"}>Home</Link>
+            <Link to={"/about"}>About</Link>
+            <Link to={"/signin"}>Sign In</Link>
+          </Nav>
+        </Center>
+      </Container>
+      <Outlet />
+    </React.Fragment>
   );
 };
 
