@@ -24,7 +24,7 @@ export const Logo = styled.div`
 `;
 export const Nav = styled.div`
   ${common};
-  gap: 10px;
+  gap: 20px;
 `;
 
 export const Link = styled(NavLink)`
@@ -32,4 +32,9 @@ export const Link = styled(NavLink)`
   color: black;
   font-size: 18px;
   font-weight: 400;
+  color: gray;
+  &.active {
+    color: black;
+    font-weight: 600;
+  }
 `;
