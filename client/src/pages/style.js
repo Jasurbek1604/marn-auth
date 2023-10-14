@@ -1,12 +1,16 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  display: grid;
-  place-items: center;
-  height: calc(100vh - 70px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  width: 90%;
+  gap: 20px;
 `;
 export const Center = styled.div`
   width: 850px;
+  margin-top: 40px;
 `;
 export const Title = styled.div`
   color: black;
@@ -17,4 +21,48 @@ export const Title = styled.div`
 export const Words = styled.div`
   font-weight: 400;
   font-size: 18px;
+`;
+
+export const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 50px;
+  gap: 10px;
+`;
+
+export const Input = styled.input`
+  border: 1px solid gray;
+  border-radius: 6px;
+  width: 400px;
+  height: 35px;
+  padding-left: 10px;
+  font-size: 15px;
+  outline: none;
+  &:focus {
+    border: 2px solid blue;
+  }
+`;
+
+export const Button = styled.button`
+  border-radius: 6px;
+  width: 400px;
+  height: 40px;
+  border: none;
+  text-transform: uppercase;
+  font-size: 17px;
+  background-color: ${({ google }) => (google ? "red" : "blue")};
+  color: #fff;
+  cursor: pointer;
+  &:active {
+    opacity: 0.7;
+  }
+`;
+
+export const Text = styled.div``;
+
+export const Span = styled.span`
+  color: blue;
+  cursor: pointer;
+  margin-left: 8px;
 `;
