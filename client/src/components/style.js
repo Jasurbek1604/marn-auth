@@ -29,10 +29,9 @@ export const Nav = styled.div`
 
 export const Link = styled(NavLink)`
   text-decoration: none;
-  color: black;
   font-size: 18px;
   font-weight: 400;
-  color: gray;
+  color: rgb(95, 95, 95);
   &.active {
     color: black;
     font-weight: 600;
