@@ -9,7 +9,7 @@ export const Container = styled.div`
   gap: 20px;
 `;
 export const Center = styled.div`
-  width: 850px;
+  max-width: 850px;
   margin-top: 40px;
 `;
 export const Title = styled.div`
