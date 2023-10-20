@@ -23,7 +23,7 @@ export const Words = styled.div`
   font-size: 18px;
 `;
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.form`
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -63,7 +63,9 @@ export const Button = styled.button`
   }
 `;
 
-export const Text = styled.div``;
+export const Text = styled.div`
+  color: ${({ red }) => red && "red"};
+`;
 
 export const Span = styled.span`
   color: blue;
