@@ -24,12 +24,12 @@ const SignUp = () => {
       });
       const data = await response.json();
       setLoading(false);
+      setError(false);
+      navigate("/signin");
       if (!data.succes) {
         setError(true);
         return;
       }
-      setError(false);
-      navigate("/signin");
     } catch (err) {
       setLoading(false);
       setError(true);

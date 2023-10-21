@@ -8,7 +8,7 @@ const SignIn = () => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.id]: e.target.value });
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
