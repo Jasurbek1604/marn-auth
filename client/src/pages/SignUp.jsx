@@ -1,16 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Button, Container, Input, Span, Title, Wrapper, Text } from "./style";
 import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({});
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
-  const handleCHange = (e) => {
-    setFormData({ ...formData, [e.target.id]: e.target.value });
-  };
-
+  const emailRef = useRef();
+  const pwRef = useRef();
+  const usrRef = useRef();
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -20,7 +18,11 @@ const SignUp = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          username: usrRef.current.value,
+          email: emailRef.current.value,
+          password: pwRef.current.value,
+        }),
       });
       const data = await response.json();
       setLoading(false);
@@ -40,9 +42,9 @@ const SignUp = () => {
     <Container>
       <Wrapper onSubmit={handleSubmit}>
         <Title>Sing Up</Title>
-        <Input onChange={handleCHange} placeholder="username" id="username" />
-        <Input onChange={handleCHange} placeholder="email" id="email" />
-        <Input onChange={handleCHange} placeholder="password" id="password" />
+        <Input ref={usrRef} placeholder="username" id="username" />
+        <Input ref={emailRef} placeholder="email" id="email" />
+        <Input ref={pwRef} placeholder="password" id="password" />
         <Button disabled={loading}>{loading ? "...loading" : "Sing Up"}</Button>
         <Button google="true">Continue with google</Button>
         <Text>
