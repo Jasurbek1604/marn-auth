@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://mern-auth-app-5qds.onrender.com/",
+        target: "http://localhost:3000",
         secure: false,
       },
     },
