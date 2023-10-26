@@ -34,8 +34,8 @@ export const Wrapper = styled.form`
 export const Input = styled.input`
   border: 1px solid gray;
   border-radius: 6px;
-  width: 400px;
-  height: 40px;
+  width: 450px;
+  height: 45px;
   padding-left: 10px;
   font-size: 15px;
   outline: none;
@@ -45,12 +45,16 @@ export const Input = styled.input`
   &:focus {
     border: 1px solid rgb(0, 0, 150);
   }
+  @media (max-width: 600px) {
+    width: 300px;
+    height: 35px;
+  }
 `;
 
 export const Button = styled.button`
   border-radius: 6px;
-  width: 400px;
-  height: 40px;
+  width: 450px;
+  height: 45px;
   border: none;
   text-transform: uppercase;
   font-size: 17px;
@@ -60,6 +64,10 @@ export const Button = styled.button`
   cursor: pointer;
   &:active {
     opacity: 0.7;
+  }
+  @media (max-width: 600px) {
+    width: 300px;
+    height: 35px;
   }
 `;
 
