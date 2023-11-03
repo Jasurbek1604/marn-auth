@@ -21,6 +21,9 @@ const SingIn = () => {
         <button className="bg-slate-700 p-3 rounded-lg text-white uppercase hover:opacity-95 disabled:opacity-80">
           Sign In
         </button>
+        <button className="bg-red-600 p-3 rounded-lg text-white uppercase hover:opacity-95 disabled:opacity-80">
+          Sign In
+        </button>
       </form>
       <div className="flex gap-2 mt-5">
         <p>Have not an account?</p>
