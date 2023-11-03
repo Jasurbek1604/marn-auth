@@ -1,7 +1,26 @@
 import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Profile from "./pages/Profile";
+import Header from "./components/Header";
 
 const App = () => {
-  return <h1 className="text-red-500">App</h1>;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Header />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="about" element={<About />} />
+          <Route path="profile" element={<Profile />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 };
 
 export default App;
