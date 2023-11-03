@@ -30,8 +30,8 @@ const SignUp = () => {
       </form>
       <div className="flex gap-2 mt-5">
         <p>Have an account? </p>
-        <NavLink to="/singin">
-          <span className="text-blue-500">Sing In</span>
+        <NavLink to="/signin">
+          <span className="text-blue-500">Sign In</span>
         </NavLink>
       </div>
     </div>
