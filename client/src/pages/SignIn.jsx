@@ -1,18 +1,25 @@
 import React, { useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import {
+  singInStart,
+  singInSuccess,
+  singInFailrule,
+} from "../redux/user/userSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const SingIn = () => {
   const emailRef = useRef();
   const pwRef = useRef();
 
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const { error, loading } = useSelector((state) => state.user);
+
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
   const handelSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
+    dispatch(singInStart());
     try {
       const res = await fetch("/api/auth/signin", {
         method: "POST",
@@ -25,15 +32,14 @@ const SingIn = () => {
         }),
       });
       const data = await res.json();
-      setLoading(false);
       if (data.success === false) {
-        setError(true);
+        dispatch(singInFailrule(data));
         return;
       }
+      dispatch(singInSuccess(data));
       navigate("/");
     } catch (err) {
-      setLoading(false);
-      setError(true);
+      dispatch(singInFailrule(err));
     }
     emailRef.current.value = "";
     pwRef.current.value = "";
@@ -73,7 +79,9 @@ const SingIn = () => {
           <span className="text-blue-500">Sing Up</span>
         </NavLink>
       </div>
-      <p className="text-red-400 mt-5">{error && "Somthing went wrong!"}</p>
+      <p className="text-red-400 mt-5">
+        {error ? error.message || "Somthing went wrong!" : ""}
+      </p>
     </div>
   );
 };
