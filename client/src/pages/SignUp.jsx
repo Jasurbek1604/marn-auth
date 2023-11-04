@@ -57,7 +57,7 @@ const SignUp = () => {
         />
         <input
           type="password"
-          placeholder="password"
+          placeholder="Password"
           id="password"
           className="bg-slate-200 outline-none p-3 rounded-lg"
           ref={passwordRef}

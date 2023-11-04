@@ -9,13 +9,13 @@ const SingIn = () => {
         <input
           type="email"
           id="email"
-          placeholder="email"
+          placeholder="Email"
           className="bg-slate-200 outline-none rounded-lg p-3"
         />
         <input
           type="password"
           id="password"
-          placeholder="password"
+          placeholder="Password"
           className="bg-slate-200 outline-none rounded-lg p-3"
         />
         <button className="bg-slate-700 p-3 rounded-lg text-white uppercase hover:opacity-95 disabled:opacity-80">
