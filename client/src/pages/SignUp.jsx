@@ -10,6 +10,12 @@ const SignUp = () => {
 
   const navigate = useNavigate();
 
+  const handleChange = ({ target: { value } }) => {
+    !value.includes("@gmail.com")
+      ? email.classList.add("bg-red-100")
+      : email.classList.remove("bg-red-100");
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -58,6 +64,7 @@ const SignUp = () => {
           id="email"
           className="bg-slate-200 p-3 outline-none rounded-lg"
           ref={emailRef}
+          onInput={handleChange}
         />
         <input
           type="password"

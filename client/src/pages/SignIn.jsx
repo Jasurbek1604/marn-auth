@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import {
   singInStart,
@@ -10,13 +10,14 @@ import { useDispatch, useSelector } from "react-redux";
 const SingIn = () => {
   const emailRef = useRef();
   const pwRef = useRef();
-
   const { error, loading } = useSelector((state) => state.user);
-
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
-
+  const handleChange = ({ target: { value } }) => {
+    !value.includes("@gmail.com")
+      ? email.classList.add("bg-red-100")
+      : email.classList.remove("bg-red-100");
+  };
   const handelSubmit = async (e) => {
     e.preventDefault();
     dispatch(singInStart());
@@ -45,6 +46,7 @@ const SingIn = () => {
     pwRef.current.value = "";
     setError(false);
   };
+
   return (
     <div className="p-3 max-w-lg mx-auto">
       <h1 className="text-center text-3xl font-semibold my-7">Sing In</h1>
@@ -55,6 +57,7 @@ const SingIn = () => {
           placeholder="Email"
           className="bg-slate-200 outline-none rounded-lg p-3"
           ref={emailRef}
+          onChange={handleChange}
         />
         <input
           type="password"
