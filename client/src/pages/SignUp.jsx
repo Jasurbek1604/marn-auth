@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const usernameRef = useRef();
@@ -7,6 +7,9 @@ const SignUp = () => {
   const passwordRef = useRef();
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -28,6 +31,7 @@ const SignUp = () => {
         setError(true);
         return;
       }
+      navigate("/signin");
     } catch (err) {
       setError(true);
       setLoading(false);
