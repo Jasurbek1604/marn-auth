@@ -45,21 +45,21 @@ const SignUp = () => {
           type="text"
           placeholder="Username"
           id="username"
-          className="bg-slate-100 p-3 outline-none rounded-lg"
+          className="bg-slate-200 p-3 outline-none rounded-lg"
           ref={usernameRef}
         />
         <input
           type="email"
           placeholder="Email"
           id="email"
-          className="bg-slate-100 p-3 outline-none rounded-lg"
+          className="bg-slate-200 p-3 outline-none rounded-lg"
           ref={emailRef}
         />
         <input
           type="password"
           placeholder="password"
           id="password"
-          className="bg-slate-100 outline-none p-3 rounded-lg"
+          className="bg-slate-200 outline-none p-3 rounded-lg"
           ref={passwordRef}
         />
         <button

@@ -10,13 +10,13 @@ const SingIn = () => {
           type="email"
           id="email"
           placeholder="email"
-          className="bg-slate-100 outline-none rounded-lg p-3"
+          className="bg-slate-200 outline-none rounded-lg p-3"
         />
         <input
           type="password"
           id="password"
           placeholder="password"
-          className="bg-slate-100 outline-none rounded-lg p-3"
+          className="bg-slate-200 outline-none rounded-lg p-3"
         />
         <button className="bg-slate-700 p-3 rounded-lg text-white uppercase hover:opacity-95 disabled:opacity-80">
           Sign In
