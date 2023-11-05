@@ -6,6 +6,7 @@ import {
   singInFailrule,
 } from "../redux/user/userSlice";
 import { useDispatch, useSelector } from "react-redux";
+import OAuth from "../components/OAuth";
 
 const SingIn = () => {
   const emailRef = useRef();
@@ -13,11 +14,6 @@ const SingIn = () => {
   const { error, loading } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const handleChange = ({ target: { value } }) => {
-    !value.includes("@gmail.com")
-      ? email.classList.add("bg-red-100")
-      : email.classList.remove("bg-red-100");
-  };
   const handelSubmit = async (e) => {
     e.preventDefault();
     dispatch(singInStart());
@@ -57,7 +53,6 @@ const SingIn = () => {
           placeholder="Email"
           className="bg-slate-200 outline-none rounded-lg p-3"
           ref={emailRef}
-          onChange={handleChange}
         />
         <input
           type="password"
@@ -72,9 +67,7 @@ const SingIn = () => {
         >
           {loading ? "...loading" : "Sign In"}
         </button>
-        <button className="bg-red-600 p-3 rounded-lg text-white uppercase hover:opacity-95 disabled:opacity-80">
-          continue with google
-        </button>
+        <OAuth />
       </form>
       <div className="flex gap-2 mt-5">
         <p>Dont have an account?</p>

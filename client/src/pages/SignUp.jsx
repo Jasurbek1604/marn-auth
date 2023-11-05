@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import OAuth from "../components/OAuth";
 
 const SignUp = () => {
   const usernameRef = useRef();
@@ -9,12 +10,6 @@ const SignUp = () => {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
-
-  const handleChange = ({ target: { value } }) => {
-    !value.includes("@gmail.com")
-      ? email.classList.add("bg-red-100")
-      : email.classList.remove("bg-red-100");
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -64,7 +59,6 @@ const SignUp = () => {
           id="email"
           className="bg-slate-200 p-3 outline-none rounded-lg"
           ref={emailRef}
-          onInput={handleChange}
         />
         <input
           type="password"
@@ -79,9 +73,7 @@ const SignUp = () => {
         >
           {loading ? "...loading" : "Sign Up"}
         </button>
-        <button className="bg-red-600 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80">
-          Continue with google
-        </button>
+        <OAuth/>
       </form>
       <div className="flex gap-2 mt-5">
         <p>Have an account? </p>
