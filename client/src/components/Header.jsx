@@ -1,8 +1,11 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import { NavLink as Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+  const { currentUser } = useSelector((state) => state.user);
+  console.log(currentUser);
   return (
     <div>
       <div className="bg-slate-200">
@@ -28,12 +31,19 @@ const Header = () => {
               <li className="text-xl">About</li>
             </Link>
             <Link
-              to="/signin"
+              to="/profile"
               className={({ isActive }) =>
                 isActive ? "text-black" : "text-gray-600"
               }
             >
-              <li className="text-xl">Sign In</li>
+              {currentUser ? (
+                <img
+                  src={currentUser.progilePhoto}
+                  className="w-8 h-8 rounded-full object-cover"
+                />
+              ) : (
+                <li className="text-xl">Sign In</li>
+              )}
             </Link>
           </ul>
         </div>
