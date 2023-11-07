@@ -37,7 +37,7 @@ const Header = () => {
             >
               {currentUser ? (
                 <img
-                  src={currentUser.progilePhoto}
+                  src={currentUser.profilePicture}
                   className="w-8 h-8 rounded-full object-cover"
                 />
               ) : (
