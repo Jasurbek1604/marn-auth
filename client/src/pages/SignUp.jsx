@@ -13,29 +13,37 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      setLoading(true);
-      const res = await fetch("/api/auth/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: usernameRef.current.value,
-          email: emailRef.current.value,
-          password: passwordRef.current.value,
-        }),
-      });
-      const data = await res.json();
-      setLoading(false);
-      if (data.success === false) {
+    if (
+      usernameRef.current.value === "" ||
+      emailRef.current.value === "" ||
+      passwordRef.current.value === ""
+    ) {
+      alert("No input data!!");
+    } else {
+      try {
+        setLoading(true);
+        const res = await fetch("/api/auth/signup", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: usernameRef.current.value,
+            email: emailRef.current.value,
+            password: passwordRef.current.value,
+          }),
+        });
+        const data = await res.json();
+        setLoading(false);
+        if (data.success === false) {
+          setError(true);
+          return;
+        }
+        navigate("/signin");
+      } catch (err) {
         setError(true);
-        return;
+        setLoading(false);
       }
-      navigate("/signin");
-    } catch (err) {
-      setError(true);
-      setLoading(false);
     }
     usernameRef.current.value = "";
     emailRef.current.value = "";
@@ -73,7 +81,7 @@ const SignUp = () => {
         >
           {loading ? "...loading" : "Sign Up"}
         </button>
-        <OAuth/>
+        <OAuth />
       </form>
       <div className="flex gap-2 mt-5">
         <p>Have an account? </p>

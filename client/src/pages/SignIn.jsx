@@ -16,31 +16,35 @@ const SingIn = () => {
   const navigate = useNavigate();
   const handelSubmit = async (e) => {
     e.preventDefault();
-    dispatch(singInStart());
-    try {
-      const res = await fetch("/api/auth/signin", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: emailRef.current.value,
-          password: pwRef.current.value,
-        }),
-      });
-      const data = await res.json();
-      if (data.success === false) {
-        dispatch(singInFailrule(data));
-        return;
+    if (emailRef.current.value === "" || pwRef.current.value === "") {
+      alert("No input data!");
+    } else {
+      try {
+        dispatch(singInStart());
+        const res = await fetch("/api/auth/signin", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: emailRef.current.value,
+            password: pwRef.current.value,
+          }),
+        });
+        const data = await res.json();
+        if (data.success === false) {
+          dispatch(singInFailrule(data));
+          return;
+        }
+        dispatch(singInSuccess(data));
+        navigate("/");
+      } catch (err) {
+        dispatch(singInFailrule(err));
       }
-      dispatch(singInSuccess(data));
-      navigate("/");
-    } catch (err) {
-      dispatch(singInFailrule(err));
+      emailRef.current.value = "";
+      pwRef.current.value = "";
+      setError(false);
     }
-    emailRef.current.value = "";
-    pwRef.current.value = "";
-    setError(false);
   };
 
   return (
