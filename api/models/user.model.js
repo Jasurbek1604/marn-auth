@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       require: true,
     },
-    profilePicture: {
+    progilePhoto: {
       type: String,
       default: "https://www.w3schools.com/howto/img_avatar.png",
     },

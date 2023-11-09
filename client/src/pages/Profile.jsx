@@ -15,6 +15,7 @@ const Profile = () => {
   const [imagePercent, setImagePercent] = useState(0);
   const [imageError, setImageError] = useState(false);
   const [formData, setFormData] = useState({});
+  console.log(currentUser);
 
   console.log(formData);
 
@@ -40,7 +41,7 @@ const Profile = () => {
       },
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) =>
-          setFormData({ ...formData, profilePicture: downloadURL })
+          setFormData({ ...formData, progilePhoto: downloadURL })
         );
       }
     );
@@ -57,7 +58,7 @@ const Profile = () => {
           onChange={(e) => setImage(e.target.files[0])}
         />
         <img
-          src={formData.profilePicture || currentUser.profilePicture}
+          src={formData.progilePhoto || currentUser.progilePhoto}
           className="w-24 h-24 rounded-full mx-auto cursor-pointer object-cover"
           alt=""
           onClick={() => fileRef.current.click()}
